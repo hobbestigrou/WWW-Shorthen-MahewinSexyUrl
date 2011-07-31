@@ -10,14 +10,16 @@ our $VERSION = '0.1';
 use Carp;
 
 sub makeashorterlink ($) {
-    my $url = shift or croak 'No URL passed to makeashorterlink';
-    my $ua = __PACKAGE__->ua();
+    my $url         = shift or croak 'No URL passed to makeashorterlink';
+    my $ua          = __PACKAGE__->ua();
     my $service_url = 'http://msud.pl';
+
     my $resp = $ua->post($service_url, [
-	sexy_url => $url,
-	source => "PerlAPI-$VERSION",
+        sexy_url => $url,
+        source   => "PerlAPI-$VERSION",
     ]);
-    #return undef unless $resp->is_redirect;
+
+    return undef unless $resp->header('X-ShortUrl');
     return $service_url . '/' . $resp->header('X-ShortUrl');
 }
 
