@@ -22,9 +22,17 @@ sub makeashorterlink ($) {
 }
 
 sub makealongerlink ($) {
-    my $msud = shift;
+    my $msud = shift or croak 'No msud key / url passed to makealongerlink';
+    my $ua   = __PACKAGE__->ua();
 
-    croak "Not implemented again.";
+    $msud = "http://msud.pl/$msud" unless $msud =~ m/^http:\/\//i;
+
+    my $resp = $ua->get($msud);
+
+    return undef unless $resp->is_redirect;
+    my $url = $resp->header('Location');
+
+    return $url;
 }
 
 1;
