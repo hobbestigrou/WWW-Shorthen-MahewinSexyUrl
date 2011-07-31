@@ -49,8 +49,11 @@ WWW::Shorten::MahewinSexyUrl - Perl interface to msud.pl
 
   use WWW::Shorten 'MahewinSexyUrl';
 
-  $short_url = makeashorterlink($long_url);
-  $long_url  = makealongerlink($short_url);
+  my $long_url  = 'http://essai.fr';
+  my $short_url = 'http://msud.pl/O0';
+
+  my $short_url = makeashorterlink($long_url);
+  my $long_url  = makealongerlink($short_url);
 
 =head1 DESCRIPTION
 
