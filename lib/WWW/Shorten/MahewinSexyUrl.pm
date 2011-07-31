@@ -43,6 +43,8 @@ __END__
 
 =head1 NAME
 
+=encoding utf8
+
 WWW::Shorten::MahewinSexyUrl - Perl interface to msud.pl
 
 =head1 SYNOPSIS
