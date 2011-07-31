@@ -15,7 +15,7 @@ use_ok WWW::Shorten::MahewinSexyUrl;
 my $url = 'http://search.cpan.org/dist/WWW-Shorten-MahewinSexyUrl/';
 my $return = makeashorterlink($url);
 my ($code) = $return =~ /(\w+)$/;
-like ( $return, qr[^\w+$], 'make it shorter');
+like ( $return, qr[^${prefix}\w+$], 'make it shorter');
 
 eval { &makeashorterlink() };
 ok($@, 'makeashorterlink fails with no args');
