@@ -18,7 +18,7 @@ sub makeashorterlink ($) {
 	source => "PerlAPI-$VERSION",
     ]);
     #return undef unless $resp->is_redirect;
-    return $resp->header('X-ShortUrl');
+    return $service_url . '/' . $resp->header('X-ShortUrl');
 }
 
 sub makealongerlink ($) {
